@@ -23,7 +23,37 @@ while accion != 2:
             mes=int(input('Digite el mes: '))
             año=int(input('Digite al año: '))
         else:
-            print('La compra de '+nombreCliente+'se registro correctamente el '+str(dia)+'/'+str(mes)+'/'+str(año))
+            print('La factura de '+nombreCliente+'se genero correctamente el '+str(dia)+'/'+str(mes)+'/'+str(año))
+
+        print("=====LISTA DE PRODUCTOS=====")   
+        print("[1]Aceite Soya (1500ml) Precio: 900")
+        print('[2]Agua(1,5 litros) Precio: 1200')
+        print('[3]Arroz(1kg) Precio:1000')
+        print('[4] Atun trocitos(140gr) Precio:1000')
+
+        producto =int(input(' Seleccione un producto digitando el número del mismo '))
+        if  producto == 1:
+            print('Elegiste Aceite de Soya de 1500ml')
+            cantidad=int(input('Digite la cantidad de unidades que desea de este producto'))
+            precio= 900 * cantidad
+        elif producto == 2:
+            print('Elegiste Agua de 1.5 litros')
+            cantidad=int(input('Digite la cantidad de unidades que desea de este producto'))
+            precio= 1200 * cantidad
+        elif producto == 3:
+            print('Elegiste Arroz de 1kg ')
+            cantidad=int(input('Digite la cantidad de unidades que desea de este producto'))
+            precio= 1000 * cantidad
+        elif producto ==  4:
+            print('Elegiste Arroz de 1kg ')
+            cantidad=int(input('Digite la cantidad de unidades que desea de este producto'))
+            precio= 1000 * cantidad
+        else:
+                producto=int(print('Producto no existente porfavor digite un producto existente'))
+
+        print(str(precio))
+                
+        
 
             
     elif accion == 2:
