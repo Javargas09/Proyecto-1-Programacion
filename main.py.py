@@ -12,6 +12,7 @@ while accion != 3:
         nombreCliente=input('Digite su nombre: ')
         while nombreCliente == "":
             nombreCliente= input('El nombre no puede estar vacio, digite nuevamente su nombre: ')
+            print('Cambios Jason')
                                
         dia=int(input('Digite el dia: '))
         mes=int(input('Digite el mes: '))
