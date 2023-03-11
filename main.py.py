@@ -1,11 +1,12 @@
 print("prueba")
 
 accion = 0
-
-while accion != 2:
+actual = 0
+while accion != 3:
     print("Menu:")
     print("1. Ingresar nueva compra ")
-    print("2. Salir ")
+    print("2. Finalizar compra ")
+    print("3. Salir ")
     
     accion = int(input("Seleccione una acción: "))
     if accion == 1:
@@ -18,10 +19,10 @@ while accion != 2:
         mes=int(input('Digite el mes: '))
         año=int(input('Digite al año: '))
         if dia > 31 or mes> 12 or año < 2022:
-            print('FECHA INVALIDA , el dia no puede ser mayor a 31 ,  el mes mayor a 12 o el año menos al 2022 ')
+            print('FECHA INVALIDA , el dia no puede ser mayor a 31 ,  el mes mayor a 12 o el año menor al 2022 ')
             dia=int(input('Digite el dia: '))
             mes=int(input('Digite el mes: '))
-            año=int(input('Digite al año: '))
+            año=int(input('Digite el año: '))
         else:
             print('La factura de '+nombreCliente+'se genero correctamente el '+str(dia)+'/'+str(mes)+'/'+str(año))
 
@@ -52,11 +53,12 @@ while accion != 2:
                 producto=int(print('Producto no existente porfavor digite un producto existente'))
 
         print(str(precio))
-                
-        
+        total= actual+precio    
+    elif accion == 2:
+         print("El precio a pagar es:", total)   
 
             
-    elif accion == 2:
+    elif accion == 3:
         salir= int(input("Saliendo del programa..."))
     else:
         print("Opción inválida. Intente de nuevo.")
