@@ -1,4 +1,3 @@
-print("prueba")
 
 accion = 0
 actual = 0
@@ -15,15 +14,18 @@ while accion != 3:
             print('Cambios Jason')
                                
         dia=int(input('Digite el dia: '))
+        while dia < 1 or dia > 31:
+            dia=int(input("El dia no puede ser menor a 1 o mayor a 31. Digitelo nuevamente. "))
+
         mes=int(input('Digite el mes: '))
+        while mes < 1 or mes > 12:
+            mes=int(input("El mes no puede ser menor a 1 o mayor a 12.Digitelo nuevamente. "))
+
         año=int(input('Digite al año: '))
-        if dia > 31 or mes> 12 or año < 2022:
-            print('FECHA INVALIDA , el dia no puede ser mayor a 31 ,  el mes mayor a 12 o el año menor al 2022 ')
-            dia=int(input('Digite el dia: '))
-            mes=int(input('Digite el mes: '))
-            año=int(input('Digite el año: '))
-        else:
-            print('La factura de '+nombreCliente+'se genero correctamente el '+str(dia)+'/'+str(mes)+'/'+str(año))
+        while año < 2022:
+            año=int(input('El año no puede ser menor al 2022. Digitelo nuevamente '))
+
+        print('La factura de '+nombreCliente+'se genero correctamente el '+str(dia)+'/'+str(mes)+'/'+str(año))
 
         print("========= LISTA DE PRODUCTOS ========")   
         print("[1]Aceite Soya (1500ml) Precio: 900")
@@ -31,53 +33,54 @@ while accion != 3:
         print('[3]Arroz(1kg) Precio:1000')
         print('[4]Atun trocitos(140gr) Precio:1000')
 
-        bandera=True
-        opcion=1
-        precio=0
-        cantidad=0
 
-        while bandera:
-            if cantidad <= 20:
+    bandera=True
+    opcion=1
+    cantidad=0
+    precio = 0
 
-                producto =int(input(' Seleccione un producto digitando el número del mismo '))
+    while bandera:
 
-                if  producto == 1:
-                    print('Elegiste Aceite de Soya de 1500ml')
-                    cantidadProducto=int(input('Digite la cantidad de unidades que desea de este producto'))
-                    precio += 900 * cantidad
-                    cantidad += cantidadProducto
+        producto =int(input(' Seleccione un producto digitando el número del mismo '))
+
+        if  producto == 1:
+            print('Elegiste Aceite de Soya de 1500ml')
+            cantidadProducto=int(input('Digite la cantidad de unidades que desea de este producto'))
+            precioProductos= 900 * cantidad
+            cantidad += cantidadProducto
+            precio += precioProductos
                     
-                elif producto == 2:
-                    print('Elegiste Agua de 1.5 litros')
-                    cantidadProducto=int(input('Digite la cantidad de unidades que desea de este producto'))
-                    precio += 1200 * cantidad
-                    cantidad += cantidadProducto
+        elif producto == 2:
+            print('Elegiste Agua de 1.5 litros')
+            cantidadProducto=int(input('Digite la cantidad de unidades que desea de este producto'))
+            precioProductos= 1200 * cantidad
+            cantidad += cantidadProducto
+            precio += precioProductos
 
-                elif producto == 3:
-                    print('Elegiste Arroz de 1kg ')
-                    cantidadProducto=int(input('Digite la cantidad de unidades que desea de este producto'))
-                    precio += 1000 * cantidad
-                    cantidad += cantidadProducto
+        elif producto == 3:
+            print('Elegiste Arroz de 1kg ')
+            cantidadProducto=int(input('Digite la cantidad de unidades que desea de este producto'))
+            precioProductos= 1000 * cantidad
+            cantidad += cantidadProducto
+            precio += precioProductos
                     
-                elif producto ==  4:
-                    print('Elegiste Arroz de 1kg ')
-                    cantidadProducto=int(input('Digite la cantidad de unidades que desea de este producto'))
-                    precio += 1000 * cantidad
-                    cantidad += cantidadProducto
+        elif producto ==  4:
+            print('Elegiste Atun trocitos de 140gr ')
+            cantidadProducto=int(input('Digite la cantidad de unidades que desea de este producto'))
+            precioProductos = 1000 * cantidad
+            cantidad += cantidadProducto
+            precio += precioProductos
                     
-                else:
-                    producto=int(print('Producto no existente porfavor digite un producto existente'))
+        else:
+            producto=int(print('Producto no existente, porfavor digite un producto existente'))
 
-                respuesta=input('Desea realizar otra compra? |Y| para si o |N| para no ')
-                if respuesta == 'N':
-                    print('El precio total es: '+str(precio))
-                    print('La cantidad de productos: '+str(cantidad))
+        respuesta=input('Desea realizar otra compra? |Y| para si o |N| para no ')
+        if respuesta == 'N':
+            print('El precio total es: '+str(precio))
+            print('La cantidad de productos: '+str(cantidad))
                     
-                    bandera=False
-            else:
-                print("Se excedio la cantidad máxima de productos")      
-         
-    elif accion == 2:
+            bandera=False         
+    if accion == 2:
         salir= int(input("Saliendo del programa..."))
     else:
         print("Opción inválida. Intente de nuevo.")
