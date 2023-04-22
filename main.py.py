@@ -1,3 +1,4 @@
+import os
 accion = 0
 actual = 0
 def descuento(cantidad, precio):
@@ -12,8 +13,33 @@ def descuento(cantidad, precio):
 
     precioNeto = precioDescuento + precioIva
 
+    print('Precio total bruto:'+str(precio))
+    print('Precio IVA: '+str(precioIva))
     print('El precio total con descuento es: ' + str(precioDescuento))
     print('El precio neto es: ' + str(precioNeto))
+
+
+def guardarFactura(nombreCliente , dia, mes, año, listaCompra, cantidad, precio):
+    precioIva = precio * 0.13
+    if cantidad <= 5:
+        precioDescuento = precio - (precio * 0.02)
+    elif cantidad > 5 and cantidad <= 10:
+        precioDescuento = precio - (precio * 0.05)
+    elif cantidad > 10:
+        precioDescuento = precio - (precio * 0.07)
+
+    precioNeto = precioDescuento + precioIva
+
+
+    with open('compras.txt', 'a') as archivo:
+        archivo.write('NombreCliente: '+nombreCliente+'\n')
+        archivo.write('Fecha: '+str(dia)+'/'+str(mes)+'/'+str(año)+'\n')
+        archivo.write('Lista de compra:\n')
+        archivo.write(listaCompra + '\n')
+        archivo.write('Precio total bruto: '+str(precio)+'\n')
+        archivo.write('Precio IVA: '+str(precioIva)+'\n')
+        archivo.write('Precio con descuento: ' + str(precioDescuento) + '\n')
+        archivo.write('Precio neto: ' + str(precioNeto) + '\n\n')
 
 while accion != 2:
     print("Menu:")
@@ -72,23 +98,18 @@ while accion != 2:
         print('[29]Papas Sazonadas con Cáscara(2kg) Precio:4,895')
         print('[30]Papas a la Francesa(2.5kg) Precio:3,395')
         
-        
-
-
-
         precio = 0
         cantidadTotal=0
-        bandera=True
+        bandera2=True
         opcion=1
         listaCompra=""
-    
         contador=1
-        #CAMBIAR UN 4 POR EL 20. EL 4 ES SOLO PARA PROBAR
-        while bandera and contador <= 4:
+
+        while bandera2 and contador <= 20:
             cantidad=0
             producto =int(input(' Seleccione un producto digitando el número del mismo '))
             cantidad = int(input("Ingrese la cantidad que desea comprar: "))
-
+        
             if  producto == 1:
                 precioProducto=900* cantidad
                 listaCompra+=("Aceite de Soya: "+str(cantidad)+"   "+str(precioProducto)+'\n')
@@ -275,22 +296,37 @@ while accion != 2:
             contador += 1
             if contador <= 4:
                 respuesta=input('Desea realizar otra compra? |Y| para si o |N| para no ')
-                #CAMBIAR EL 5 POR UN 21. 5 SOLO PARA PROBAR
-                if respuesta == 'N' or contador == 5:
+                if respuesta == 'N' or contador == 21:
                     print("============Factura============")
-                    print(listaCompra)
-                    print('El precio total es: ' + str(precio))       
-                    #print("La cantidad total de productos es: "+str(cantidadTotal)) 
+                    print("Nombre Cliente: "+nombreCliente)
+                    print('Fecha: '+str(dia)+'/'+str(mes)+'/'+str(año))
+                    print(listaCompra)  
                     descuento(cantidadTotal, precio)
-                    
-                    bandera=False
-            else:
-                print("Ha alcanzado el limite de 20 productos en la factura.Realice una nueva compra")
-                print(listaCompra)
-                print("El precio total es: " + str(precio))
-                descuento(cantidadTotal, precio)
-                #print("La cantidad total de productos es: "+str(cantidadTotal))
+                    confirmacion=input("Desea confirmar su compra?, |Y| para si o |N| para no ")
+                    if confirmacion=='Y':
+                        guardarFactura(nombreCliente , dia, mes, año, listaCompra, cantidadTotal, precio)
+                        print("La compra se confirmo con exito...")
+                    else:
+                        print("La compra no se completo...")
 
-                bandera=False        
+                    bandera2=False
+
+            else:
+                print("Ha alcanzado el limite de 20 productos en la factura. Realice una nueva compra")
+                print("============Factura============")
+                print("Nombre Cliente: "+nombreCliente)
+                print('Fecha: '+str(dia)+'/'+str(mes)+'/'+str(año))
+                print(listaCompra)
+                descuento(cantidadTotal, precio)
+                confirmacion=input("Desea confirmar su compra?, |Y| para si o |N| para no ")
+                if confirmacion=='Y':
+                    guardarFactura(nombreCliente , dia, mes, año, listaCompra, cantidadTotal, precio)
+                    print("La compra se confirmo con exito...")
+                else:
+                    print("La compra no se completo...")
+
+                bandera2=False
+
     if accion == 2:
+        bandera=False
         salir= int(input("Saliendo del programa..."))

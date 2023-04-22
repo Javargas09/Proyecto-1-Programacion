@@ -1,0 +1,24 @@
+NombreCliente: Jason
+Fecha: 9/2/2022
+Lista de compra:
+Aceite de Soya: 2   1800
+Agua: 3   3600
+Arroz: 5   5000
+
+Precio total bruto: 10400
+Precio IVA: 1352.0
+Precio con descuento: 9880.0
+Precio neto: 11232.0
+
+NombreCliente: Jason
+Fecha: 9/2/2022
+Lista de compra:
+Aceite de Soya: 2   1800
+Agua: 3   3600
+Arroz: 4   4000
+
+Precio total bruto: 9400
+Precio IVA: 1222.0
+Precio con descuento: 8930.0
+Precio neto: 10152.0
+
